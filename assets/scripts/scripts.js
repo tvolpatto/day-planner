@@ -31,22 +31,23 @@ function formatHour(hour) {
 
 function createPlannerCol(hour, text) {
     var textArea = $("<textarea>");
+    textArea.addClass("w-100 h-100");
     textArea.attr("id", `text-${hour}`);
     setTimePeriods(textArea, hour);
     if (text != null) {
         textArea.val(text);
     }
 
-    return $("<div>").addClass("col-10")
+    return $("<div>").addClass("col-10 px-0")
         .append(textArea);
 }
 
 function createSaveCol(hour) {
     var btnSave = $("<button>Save</button>");
-    btnSave.addClass("saveBtn");
+    btnSave.addClass("saveBtn w-100 h-100");
     btnSave.attr("data-time", hour);  
 
-    return $("<div>").addClass("col-1").append(btnSave);;
+    return $("<div>").addClass("col-1 px-0").append(btnSave);;
 }
 
 function save() {
@@ -66,6 +67,7 @@ function load() {
 
 function setTimePeriods(el, selectedHour) {
     var now = moment().hour();
+   
     if(selectedHour < now) {
         el.addClass("past");
     } else if(selectedHour === now) {
@@ -73,7 +75,6 @@ function setTimePeriods(el, selectedHour) {
     } else {
         el.addClass("future");
     }
-
 }
 
 $(document).ready(function () {
