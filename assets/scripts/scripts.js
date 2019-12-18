@@ -43,7 +43,7 @@ function createPlannerCol(hour, text) {
 }
 
 function createSaveCol(hour) {
-    var btnSave = $("<button>Save</button>");
+    var btnSave = $(`<button><i class="fas fa-save"></i></button>`);
     btnSave.addClass("saveBtn w-100 h-100");
     btnSave.attr("data-time", hour);  
 
