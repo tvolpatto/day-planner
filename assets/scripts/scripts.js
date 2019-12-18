@@ -32,6 +32,7 @@ function formatHour(hour) {
 function createPlannerCol(hour, text) {
     var textArea = $("<textarea>");
     textArea.attr("id", `text-${hour}`);
+    setTimePeriods(textArea, hour);
     if (text != null) {
         textArea.val(text);
     }
@@ -60,6 +61,18 @@ function save() {
 function load() {
     schedule = localStorage.getItem("schedule") != null
         ? JSON.parse(localStorage.getItem("schedule")) : new Array(9);
+
+}
+
+function setTimePeriods(el, selectedHour) {
+    var now = moment().hour();
+    if(selectedHour < now) {
+        el.addClass("past");
+    } else if(selectedHour === now) {
+        el.addClass("present");
+    } else {
+        el.addClass("future");
+    }
 
 }
 
