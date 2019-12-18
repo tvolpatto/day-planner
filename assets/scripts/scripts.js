@@ -83,7 +83,7 @@ function setTimePeriods(el, selectedHour) {
 function saveEffects(block){
     $(block).addClass("saving");
     $(block).animate({ "border-width": "5px" } );
-    $(block).animate({ "border-width": "0px" }, 500, ()=>{
+    $(block).animate({ "border-width": "1px" }, 500, ()=>{
         $(block).removeClass("saving");
     });   
 }
