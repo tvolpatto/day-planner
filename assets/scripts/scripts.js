@@ -22,7 +22,11 @@ function renderTimeBlocks() {
 
 function createHourCol(hour) {
     return $("<div>").addClass("hour col-1")
-        .text(hour);
+    .text(formatHour(hour));
+}
+
+function formatHour(hour) {
+    return moment(hour, "H").format('h a').toUpperCase();
 }
 
 function createPlannerCol(hour, text) {
