@@ -7,6 +7,7 @@ function renderTimeBlocks() {
         var hour = i + firstHour;
 
         var timeBLock = $("<div>").addClass("row time-block");
+        timeBLock.attr("id", `block-${hour}`);
 
         container.append(timeBLock);
 
@@ -55,8 +56,9 @@ function save() {
     var text = $(`#text-${hour}`).val();
     var index = parseInt(hour) - firstHour;
     schedule[index] = text;
-
+    
     localStorage.setItem("schedule", JSON.stringify(schedule));
+    saveEffects(`#block-${hour}`);
 }
 
 function load() {
@@ -75,6 +77,14 @@ function setTimePeriods(el, selectedHour) {
     } else {
         el.addClass("future");
     }
+}
+
+function saveEffects(block){
+    $(block).addClass("saving");
+    $(block).animate({ "border-width": "5px" } );
+    $(block).animate({ "border-width": "0px" }, 500, ()=>{
+        $(block).removeClass("saving");
+    });   
 }
 
 $(document).ready(function () {
