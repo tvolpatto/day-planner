@@ -1,6 +1,7 @@
 var container = $(".container");
 var schedule;
 var firstHour = 9;
+var currentDayElm = $("#currentDay");
 
 function renderTimeBlocks() {
     for (var i = 0; i < 9; i++) {
@@ -87,7 +88,12 @@ function saveEffects(block){
     });   
 }
 
+function showCurrentDay() {
+    currentDayElm.text(moment().format('dddd, MMMM DD') );
+}
+
 $(document).ready(function () {
+    showCurrentDay()
     load();
     renderTimeBlocks();
     container.on("click", "button", save);
